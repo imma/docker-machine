@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
 function docker_machine_install {
-  local fnm_machine="docker-machine-0.7.0-$(uname -s)"
-  cache curl "$fnm_machine" "https://github.com/docker/machine/releases/download/v0.7.0/docker-machine-$(uname -s)-$(uname -m)"
+  local fnm_machine="docker-machine-0.8.0-$(uname -s)"
+  cache curl "$fnm_machine" "https://github.com/docker/machine/releases/download/v0.8.0/docker-machine-$(uname -s)-$(uname -m)"
   rsync -ia "${BASEBOX_CACHE}/curl/$fnm_machine" "$shome/bin/docker-machine"
   chmod +x "$shome/bin/docker-machine"
 }
