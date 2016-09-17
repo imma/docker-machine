@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 function main {
-  local shome="${_docker_machine_home:-"$(cd -P -- "${BASH_SOURCE%/*}/.." && pwd -P)"}"
+  local shome="$(cd -P -- "${BASH_SOURCE%/*}/.." && pwd -P)"
   source "$shome/script/profile"
 
   local cmd_docker="$(which /usr/local/bin/docker /usr/bin/docker)"
