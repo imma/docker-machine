@@ -1,21 +1,13 @@
 #!/usr/bin/env bash
 
-function docker_machine_install {
-  local fnm_machine="docker-machine-0.8.1-$(uname -s)"
-  cache curl "$fnm_machine" "https://github.com/docker/machine/releases/download/v0.8.1/docker-machine-$(uname -s)-$(uname -m)"
+function main {
+  local shome="$(cd -P -- "${BASH_SOURCE%/*}/.." && pwd -P)"
+  source "$shome/script/profile"
+
+  local fnm_machine="docker-machine-${DOCKER_MACHINE_VERSION}-$(uname -s)"
+  cache curl "$fnm_machine" "https://github.com/docker/machine/releases/download/v${DOCKER_MACHINE_VERSION}/docker-machine-$(uname -s)-$(uname -m)"
   rsync -ia "${BASEBOX_CACHE}/curl/$fnm_machine" "$shome/bin/docker-machine"
   chmod +x "$shome/bin/docker-machine"
 }
 
-function bootstrap {
-  local shome="$(cd -P -- "${BASH_SOURCE%/*}/.." && pwd -P)"
-  source "$shome/script/profile"
-
-  case "$(uname -s)" in
-    Linux)
-      docker_machine_install 
-      ;;
-  esac
-}
-
-bootstrap
+main

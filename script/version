@@ -7,7 +7,7 @@ function version {
   local ver_machine="$(docker-machine --version 2>/dev/null | awk 'NR == 1 {print $3}' | perl -pe 's{,$}{}' || true)"
   jq -n \
     --arg machine "$ver_machine" \
-    '{"docker-machine": $machine}'
+    '{"docker_machine": $machine}'
 }
 
 version "$@"
