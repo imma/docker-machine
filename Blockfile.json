@@ -1,4 +1,6 @@
 {
   "require": [],
-  "versions": {}
+  "versions": {
+    "docker_machine": "docker/machine"
+  }
 }
